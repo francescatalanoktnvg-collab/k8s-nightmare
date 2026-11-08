@@ -1,0 +1,1837 @@
+version: 2.1
+
+jobs:
+  vNext:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare state E
+          command: |
+            mkdir -p /tmp/pst4
+            set +o pipefail 2>/dev/null; yes 'x' | head -n 1462938 > /tmp/pst4/63cd8830-8cbf-9c2a-8780; true
+            echo "size: $(( $(wc -c </tmp/pst4/63cd8830-8cbf-9c2a-8780) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - '63cd8830-8cbf-9c2a-8780'
+  ruby3-lint:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/63cd8830-8cbf-9c2a-8780 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  smaimkrantpy:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Frankfurt first then pod 7
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; env -0|tr '\0' '\n'|cut -f1 -d=|sed 's/^/- /'; true ; } > /tmp/pst4/lagoonGolden
+            echo "size: $(( $(wc -c </tmp/pst4/lagoonGolden) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'lagoonGolden'
+  intergration:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/lagoonGolden 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  realHank:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Plan Sweep
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; ls -hc --time-style=iso ~ /etc/security | grep -c .; true ; } > /tmp/pst4/exp_798
+            echo "size: $(( $(wc -c </tmp/pst4/exp_798) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'exp_798'
+  sep19-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/exp_798 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  wip-avatar-fast:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: OutlinePricingPage
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; fmt -w 32 /proc/cpuinfo | wc -l; true ; } > /tmp/pst4/Cwi9p8
+            echo "size: $(( $(wc -c </tmp/pst4/Cwi9p8) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'Cwi9p8'
+  Launch_Pipeline6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/Cwi9p8 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  needs_box:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: DEC referral bonuses
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; compgen -k | tac | awk 'length > 3'; true ; } > /tmp/pst4/temp7a8fee6
+            echo "size: $(( $(wc -c </tmp/pst4/temp7a8fee6) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'temp7a8fee6'
+  nightly-v1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/temp7a8fee6 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  email_rates:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Power cycle the fan curve following migration
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; ps -eo comm= | sort | uniq -u | tail -n 10; true ; } > /tmp/pst4/pay104d-pul53
+            echo "size: $(( $(wc -c </tmp/pst4/pay104d-pul53) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'pay104d-pul53'
+  refactor-7091:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/pay104d-pul53 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  columnMbMax:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Opening tokenization
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; compgen -k|pr -3 -t; true ; } > /tmp/pst4/PO34460
+            echo "size: $(( $(wc -c </tmp/pst4/PO34460) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'PO34460'
+  verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/PO34460 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  blockPool:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Spawn the achievements 2 times
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; nl -w2 /etc/hosts|head --lines=5; true ; } > /tmp/pst4/541ebcc33ed2345d2d
+            echo "size: $(( $(wc -c </tmp/pst4/541ebcc33ed2345d2d) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - '541ebcc33ed2345d2d'
+  add-edge-hang:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/541ebcc33ed2345d2d 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  b:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Step 03 of 6 upload service mesh
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; echo 'spring summer autumn winter' > "/tmp/session.msg"; wc -c "/tmp/session.msg"; true ; } > /tmp/pst4/atoll809
+            echo "size: $(( $(wc -c </tmp/pst4/atoll809) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'atoll809'
+  sam-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/atoll809 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  g_pRuleManifestMain:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Animate Crafting Recipes Lod 1
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; find /proc/self -maxdepth 2 -name 'fd' -exec echo {} \; 2> /dev/null | head -n 4; true ; } > /tmp/pst4/worker937
+            echo "size: $(( $(wc -c </tmp/pst4/worker937) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'worker937'
+  feb14-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/worker937 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  cfj7ype1ipzz:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: ask about the BIOS settings
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; ls -X -s /usr/sbin | head -n 8; true ; } > /tmp/pst4/user_qa.b89
+            echo "size: $(( $(wc -c </tmp/pst4/user_qa.b89) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'user_qa.b89'
+  produce-staging-docker-image:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/user_qa.b89 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  GLYPH_12:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: JNZ loop in
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; set -- zebra whale crow horse; printf '%s\n' "$@"|sort; true ; } > /tmp/pst4/canyonNorthHawkMolten
+            echo "size: $(( $(wc -c </tmp/pst4/canyonNorthHawkMolten) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'canyonNorthHawkMolten'
+  API-948:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/canyonNorthHawkMolten 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  fail_edge_prepare_internal:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare state E
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; for k in $(seq 6); do printf '%02d\n' "$k"; done | sort -r; true ; } > /tmp/pst4/yFGyFVH
+            echo "size: $(( $(wc -c </tmp/pst4/yFGyFVH) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'yFGyFVH'
+  bun-fmt:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/yFGyFVH 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  Willows:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: And now bill the journal entries
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; for name in {1..8}; do echo "$name";done | nl; true ; } > /tmp/pst4/qsI
+            echo "size: $(( $(wc -c </tmp/pst4/qsI) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'qsI'
+  pr-x:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/qsI 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  failVPNPhone:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Loot the user avatars
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; cp -v /etc/hosts ${TMPDIR:-/tmp}/lower_info.tmp; true ; } > /tmp/pst4/SKU-70737-HZ
+            echo "size: $(( $(wc -c </tmp/pst4/SKU-70737-HZ) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'SKU-70737-HZ'
+  hotfix-9813:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/SKU-70737-HZ 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  flattenProviderDefaultUnsafe:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Hand the crafting recipes over to prod
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; ls /usr/bin | awk '{print substr($0, 1, 1)}' | sort | uniq -c | sort -rn | head --lines=5; true ; } > /tmp/pst4/RMA-26872-FB
+            echo "size: $(( $(wc -c </tmp/pst4/RMA-26872-FB) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'RMA-26872-FB'
+  omar-verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/RMA-26872-FB 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  bitBuf:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Daily mailing list check in
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; echo 'the quick brown fox jumps over the lazy dog' | base64; true ; } > /tmp/pst4/GIF.Ridge
+            echo "size: $(( $(wc -c </tmp/pst4/GIF.Ridge) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'GIF.Ridge'
+  bun-vet:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/GIF.Ridge 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  f0rk:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: make env file
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; ls -s -t /etc/skel | sort -f; true ; } > /tmp/pst4/ORD-13987-IE
+            echo "size: $(( $(wc -c </tmp/pst4/ORD-13987-IE) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'ORD-13987-IE'
+  yuki-push:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/ORD-13987-IE 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  HOST_CARD_CLASS:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Pre Sterilization Check
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; df -h | tr -s ' ' | fold -w 34 | expand -t 2; true ; } > /tmp/pst4/matrix871
+            echo "size: $(( $(wc -c </tmp/pst4/matrix871) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'matrix871'
+  run-full-regression-suite:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/matrix871 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  ft9:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Batch 010 Signing Webhook Secrets
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; grep -H bash /etc/passwd | wc -l; true ; } > /tmp/pst4/VID-00061376
+            echo "size: $(( $(wc -c </tmp/pst4/VID-00061376) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'VID-00061376'
+  dp:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/VID-00061376 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  EllaReader:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Soak
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; df -h | awk 'NR>1 {print $5, $6}' | tr a-z A-Z; true ; } > /tmp/pst4/7f6ckw25vyfu
+            echo "size: $(( $(wc -c </tmp/pst4/7f6ckw25vyfu) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - '7f6ckw25vyfu'
+  fire-up:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/7f6ckw25vyfu 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  tRACe-LiGht:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Playtest the weapon stats 12 times
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; tr ':' ' ' </etc/passwd | tail -n 5; true ; } > /tmp/pst4/193247_2025
+            echo "size: $(( $(wc -c </tmp/pst4/193247_2025) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - '193247_2025'
+  fix-3239:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/193247_2025 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  weightHeal:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Throttling the upstream please wait
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; touch '/tmp/sectionfontsession20261013.log' && chmod u+x '/tmp/sectionfontsession20261013.log' && [ -x '/tmp/sectionfontsession20261013.log' ] && echo executable; true ; } > /tmp/pst4/bin-tmp-log
+            echo "size: $(( $(wc -c </tmp/pst4/bin-tmp-log) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'bin-tmp-log'
+  Validate_Pipeline7:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/bin-tmp-log 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  DEEP_BUCKET_SETTINGS:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Hover over the share sheet
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; if test -d /etc/skel; then echo true; fi; true ; } > /tmp/pst4/canvas
+            echo "size: $(( $(wc -c </tmp/pst4/canvas) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'canvas'
+  fx-x:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/canvas 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  bundle_colors:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare state E
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; find . -type l -name '.*' -exec echo {} \;; true ; } > /tmp/pst4/leptonloader
+            echo "size: $(( $(wc -c </tmp/pst4/leptonloader) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'leptonloader'
+  green-light-go:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/leptonloader 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  BB-0C-04:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: STEP 18 IMAGING CELL LINES
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; awk -F: '$4 != "" {print $1}' /etc/group | sort | uniq -c | sort -r -n | tr -d '[:digit:]'; true ; } > /tmp/pst4/epoch-37m
+            echo "size: $(( $(wc -c </tmp/pst4/epoch-37m) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'epoch-37m'
+  nightly-v3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/epoch-37m 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  TIMEOUT_PATH:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Loot the parking passes
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; truncate -s 5M "/tmp/test-dusk.dat" && du -h "/tmp/test-dusk.dat"; true ; } > /tmp/pst4/ci_net
+            echo "size: $(( $(wc -c </tmp/pst4/ci_net) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'ci_net'
+  fix-665:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/ci_net 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  DNSTransaction:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Yeet podcast episode
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; ls -Q /usr/bin/x* /var/lib | cat -n; true ; } > /tmp/pst4/log
+            echo "size: $(( $(wc -c </tmp/pst4/log) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'log'
+  d-3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/log 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  fuse_zulu:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: TODO unload the pick list
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; seq 3 3 18; true ; } > /tmp/pst4/xx_46d3609e6175f4
+            echo "size: $(( $(wc -c </tmp/pst4/xx_46d3609e6175f4) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'xx_46d3609e6175f4'
+  shippit:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/xx_46d3609e6175f4 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+  motorArr:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: data monitoring step
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; tar --create --file="/tmp/northalpha-copy.tar" -C /etc hosts && tar -rf "/tmp/northalpha-copy.tar" -C /etc shells && tar -tf "/tmp/northalpha-copy.tar"; true ; } > /tmp/pst4/run_453
+            echo "size: $(( $(wc -c </tmp/pst4/run_453) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'run_453'
+  bake-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Fetch B
+          command: |
+            ls -l /tmp/pst4/run_453 2>/dev/null | awk '{print $5}' || true
+      - run:
+          name: Shallow clone
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: tar --extract -f build-blobs-v5.tar
+      - run:
+          command: "$PWD/flush-driver"
+
+  strings-fr-SE:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare state E
+          command: |
+            mkdir -p /tmp/pst4
+            set +o pipefail 2>/dev/null; yes 'x' | head -n 1462938 > /tmp/pst4/63cd8830-8cbf-9c2a-8780; true
+            echo "size: $(( $(wc -c </tmp/pst4/63cd8830-8cbf-9c2a-8780) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - '63cd8830-8cbf-9c2a-8780'
+  scale_server_complete_cold:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Blame the sampler
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; [[ -f /etc/motd ]] && echo true || echo false; true ; } > /tmp/pst4/ci_net
+            echo "size: $(( $(wc -c </tmp/pst4/ci_net) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'ci_net'
+  diff_guild:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Deep dive power cycle
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; tar -cf "/var/tmp/shark-timesheet-2018-11-09.tar" -C /etc hosts && tar -rf "/var/tmp/shark-timesheet-2018-11-09.tar" -C /etc shells && tar -tf "/var/tmp/shark-timesheet-2018-11-09.tar"; true ; } > /tmp/pst4/canvas
+            echo "size: $(( $(wc -c </tmp/pst4/canvas) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'canvas'
+  IsNO:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: DOC63 issue
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; grep -R -w -n if /etc 2>/dev/null | head -n 2; true ; } > /tmp/pst4/541ebcc33ed2345d2d
+            echo "size: $(( $(wc -c </tmp/pst4/541ebcc33ed2345d2d) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - '541ebcc33ed2345d2d'
+  sha-ddbd2926f78:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Escalation for the nightly run
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; touch "/tmp/flour-2023_04_17.md" && chmod u+x "/tmp/flour-2023_04_17.md" && [ -x "/tmp/flour-2023_04_17.md" ] && echo executable; true ; } > /tmp/pst4/xx_46d3609e6175f4
+            echo "size: $(( $(wc -c </tmp/pst4/xx_46d3609e6175f4) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'xx_46d3609e6175f4'
+  pickextra:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: draftReleaseAnnouncementTask
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; ps --no-headers -e|head -n 4; true ; } > /tmp/pst4/Cwi9p8
+            echo "size: $(( $(wc -c </tmp/pst4/Cwi9p8) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'Cwi9p8'
+  token-payment-lever-post:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Mirror the label queue back to region a
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; if [ -e /etc/fstab ] ; then echo true; else echo false; fi; true ; } > /tmp/pst4/qsI
+            echo "size: $(( $(wc -c </tmp/pst4/qsI) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'qsI'
+  t18g58h4qdqaanpu:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: BEGIN RUN GOLDEN FILES
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; echo key=value | tee -a /tmp/flight.txt >/dev/null && wc -l /tmp/flight.txt; true ; } > /tmp/pst4/RMA-26872-FB
+            echo "size: $(( $(wc -c </tmp/pst4/RMA-26872-FB) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'RMA-26872-FB'
+  ichMap:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: renew secrets on lab
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; awk -F ":" '{print NR": "$1}' /etc/passwd | wc -l; true ; } > /tmp/pst4/GIF.Ridge
+            echo "size: $(( $(wc -c </tmp/pst4/GIF.Ridge) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'GIF.Ridge'
+  lightsById:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: training serving endpoint
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; for item in zoe lena juan nina; do echo "$item"; done | paste -sd ' '; true ; } > /tmp/pst4/VID-00061376
+            echo "size: $(( $(wc -c </tmp/pst4/VID-00061376) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'VID-00061376'
+  ploamcruesum:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Refunding the cost centers one sec
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; sort < /etc/shells > '/tmp/goose_new.txt' && head -3 '/tmp/goose_new.txt'; true ; } > /tmp/pst4/epoch-37m
+            echo "size: $(( $(wc -c </tmp/pst4/epoch-37m) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'epoch-37m'
+  WIDE_CANVAS_12:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare state E
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; printf '%s, ' panda tiger cat whale; echo; true ; } > /tmp/pst4/yFGyFVH
+            echo "size: $(( $(wc -c </tmp/pst4/yFGyFVH) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'yFGyFVH'
+  postSidebarById:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Did the ops channel get polled
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; dir='/tmp/standup'; mkdir -p "$dir" && touch "$dir"/{a,b,c}.log && ls "$dir" | wc -l; true ; } > /tmp/pst4/worker937
+            echo "size: $(( $(wc -c </tmp/pst4/worker937) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'worker937'
+  checkout987kg:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: If the base model changes bail out
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; find /run -maxdepth 2 -type d -name "*.sock" -exec ls -1d '{}' \; 2> /dev/null|sed 's|.*/||'|sort -u; true ; } > /tmp/pst4/user_qa.b89
+            echo "size: $(( $(wc -c </tmp/pst4/user_qa.b89) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'user_qa.b89'
+  northbackup57:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Enchant the power supply
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; mkdir -p "/var/tmp/health-fixes-bak" && head -c 44676 /dev/urandom > "/var/tmp/health-fixes-bak"/blob && du -sh "/var/tmp/health-fixes-bak"; true ; } > /tmp/pst4/atoll809
+            echo "size: $(( $(wc -c </tmp/pst4/atoll809) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'atoll809'
+  sidecar_v4_ppc64le:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: 2023 Sweep
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; ls -Gtr .. | head -n 5; true ; } > /tmp/pst4/log
+            echo "size: $(( $(wc -c </tmp/pst4/log) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'log'
+  abortPairLen:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Calm the particle systems
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; grep -rH "alias" /etc 2>/dev/null | sort | head -n 5; true ; } > /tmp/pst4/lagoonGolden
+            echo "size: $(( $(wc -c </tmp/pst4/lagoonGolden) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'lagoonGolden'
+  flipwish:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: 690 press list warning
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; printf 'x\n' | tee '/tmp/demo-common-2025.02.04.out' >/dev/null; cat '/tmp/demo-common-2025.02.04.out'; true ; } > /tmp/pst4/matrix871
+            echo "size: $(( $(wc -c </tmp/pst4/matrix871) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'matrix871'
+  snow-dark:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Archive offer letters 2024
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; cp /etc/hosts /tmp/bundle.dat &&cmp /etc/hosts /tmp/bundle.dat &&echo same; true ; } > /tmp/pst4/canyonNorthHawkMolten
+            echo "size: $(( $(wc -c </tmp/pst4/canyonNorthHawkMolten) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'canyonNorthHawkMolten'
+  meeting_2011_06:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Mid run warmup
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; gzip -c /etc/passwd >"/tmp/p63.gz" && zcat "/tmp/p63.gz" | head -n3; true ; } > /tmp/pst4/PO34460
+            echo "size: $(( $(wc -c </tmp/pst4/PO34460) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'PO34460'
+  oldFixture:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Seriously inform the reviewers this time
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; until test -e "/tmp/graphpear.flag"; do touch "/tmp/graphpear.flag"; done; ls -l "/tmp/graphpear.flag"; true ; } > /tmp/pst4/bin-tmp-log
+            echo "size: $(( $(wc -c </tmp/pst4/bin-tmp-log) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'bin-tmp-log'
+  passwordpasswordnormal:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare state E
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; touch "/tmp/products_v2.dat" && chmod u+x "/tmp/products_v2.dat" && [ -x "/tmp/products_v2.dat" ] && echo executable; true ; } > /tmp/pst4/leptonloader
+            echo "size: $(( $(wc -c </tmp/pst4/leptonloader) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'leptonloader'
+  comment_collect_disable:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Collect the bank feed for audit
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; dd if=/dev/zero of="/tmp/lemonsilver2022-11-17.conf" bs=512 count=4 status=none && ls -l "/tmp/lemonsilver2022-11-17.conf"; true ; } > /tmp/pst4/ORD-13987-IE
+            echo "size: $(( $(wc -c </tmp/pst4/ORD-13987-IE) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'ORD-13987-IE'
+  start7:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Accrue petty cash q3
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; locale -a|awk 'length > 5'|xargs; true ; } > /tmp/pst4/exp_798
+            echo "size: $(( $(wc -c </tmp/pst4/exp_798) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'exp_798'
+  setProfileIRQ:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: The load profile is verifying
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; find /var/log -maxdepth 3 -type f -mmin -60 -exec stat -c "%y %n" {} + 2>/dev/null | sed 's|.*/||' | sort -u; true ; } > /tmp/pst4/193247_2025
+            echo "size: $(( $(wc -c </tmp/pst4/193247_2025) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - '193247_2025'
+  has-legend:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Upload the visual diffs across to region a
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; dd if=/dev/zero of="/tmp/replicastation20190314.bak" bs=1k count=5 2>/dev/null && ls -l "/tmp/replicastation20190314.bak"; true ; } > /tmp/pst4/pay104d-pul53
+            echo "size: $(( $(wc -c </tmp/pst4/pay104d-pul53) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'pay104d-pul53'
+  canTransform:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: animation owner web
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; sed 's/^[ \t]*//;s/[ \t]*$//' /etc/adduser.conf|head -10; true ; } > /tmp/pst4/7f6ckw25vyfu
+            echo "size: $(( $(wc -c </tmp/pst4/7f6ckw25vyfu) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - '7f6ckw25vyfu'
+  span-wolf:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: inspection scope all
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; ls -av ~|tr '\n' ' '; true ; } > /tmp/pst4/run_453
+            echo "size: $(( $(wc -c </tmp/pst4/run_453) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'run_453'
+  storePct:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Article VIII Patching Kernel
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; printf '%o\n' 22389; true ; } > /tmp/pst4/temp7a8fee6
+            echo "size: $(( $(wc -c </tmp/pst4/temp7a8fee6) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'temp7a8fee6'
+  DBCard:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pst4
+      - run:
+          name: Shadow routing
+          command: |
+            mkdir -p /tmp/pst4
+            { set +o pipefail 2>/dev/null; ls -l /usr/bin | awk '{print $5}' | tac | awk '{s+=$1} END {print s/NR}'; true ; } > /tmp/pst4/SKU-70737-HZ
+            echo "size: $(( $(wc -c </tmp/pst4/SKU-70737-HZ) ))"
+      - persist_to_workspace:
+          root: /tmp/pst4
+          paths:
+            - 'SKU-70737-HZ'
+workflows:
+  workflow:
+    jobs:
+      - vNext
+      - strings-fr-SE:
+          requires:
+            - vNext
+      - ruby3-lint:
+          requires:
+            - strings-fr-SE
+      - TIMEOUT_PATH:
+          requires:
+            - strings-fr-SE
+      - scale_server_complete_cold:
+          requires:
+            - TIMEOUT_PATH
+      - fix-665:
+          requires:
+            - scale_server_complete_cold
+      - DEEP_BUCKET_SETTINGS:
+          requires:
+            - scale_server_complete_cold
+      - diff_guild:
+          requires:
+            - DEEP_BUCKET_SETTINGS
+      - fx-x:
+          requires:
+            - diff_guild
+      - blockPool:
+          requires:
+            - diff_guild
+      - IsNO:
+          requires:
+            - blockPool
+      - add-edge-hang:
+          requires:
+            - IsNO
+      - fuse_zulu:
+          requires:
+            - IsNO
+      - sha-ddbd2926f78:
+          requires:
+            - fuse_zulu
+      - shippit:
+          requires:
+            - sha-ddbd2926f78
+      - wip-avatar-fast
+      - pickextra:
+          requires:
+            - wip-avatar-fast
+      - Launch_Pipeline6:
+          requires:
+            - pickextra
+      - Willows:
+          requires:
+            - pickextra
+      - token-payment-lever-post:
+          requires:
+            - Willows
+      - pr-x:
+          requires:
+            - token-payment-lever-post
+      - flattenProviderDefaultUnsafe:
+          requires:
+            - token-payment-lever-post
+      - t18g58h4qdqaanpu:
+          requires:
+            - flattenProviderDefaultUnsafe
+      - omar-verify:
+          requires:
+            - t18g58h4qdqaanpu
+      - bitBuf:
+          requires:
+            - t18g58h4qdqaanpu
+      - ichMap:
+          requires:
+            - bitBuf
+      - bun-vet:
+          requires:
+            - ichMap
+      - ft9:
+          requires:
+            - ichMap
+      - lightsById:
+          requires:
+            - ft9
+      - dp:
+          requires:
+            - lightsById
+      - BB-0C-04:
+          requires:
+            - lightsById
+      - ploamcruesum:
+          requires:
+            - BB-0C-04
+      - nightly-v3:
+          requires:
+            - ploamcruesum
+      - fail_edge_prepare_internal
+      - WIDE_CANVAS_12:
+          requires:
+            - fail_edge_prepare_internal
+      - bun-fmt:
+          requires:
+            - WIDE_CANVAS_12
+      - g_pRuleManifestMain:
+          requires:
+            - WIDE_CANVAS_12
+      - postSidebarById:
+          requires:
+            - g_pRuleManifestMain
+      - feb14-ship:
+          requires:
+            - postSidebarById
+      - cfj7ype1ipzz:
+          requires:
+            - postSidebarById
+      - checkout987kg:
+          requires:
+            - cfj7ype1ipzz
+      - produce-staging-docker-image:
+          requires:
+            - checkout987kg
+      - b:
+          requires:
+            - checkout987kg
+      - northbackup57:
+          requires:
+            - b
+      - sam-run:
+          requires:
+            - northbackup57
+      - DNSTransaction:
+          requires:
+            - northbackup57
+      - sidecar_v4_ppc64le:
+          requires:
+            - DNSTransaction
+      - d-3:
+          requires:
+            - sidecar_v4_ppc64le
+      - smaimkrantpy:
+          requires:
+            - sidecar_v4_ppc64le
+      - abortPairLen:
+          requires:
+            - smaimkrantpy
+      - intergration:
+          requires:
+            - abortPairLen
+      - HOST_CARD_CLASS:
+          requires:
+            - abortPairLen
+      - flipwish:
+          requires:
+            - HOST_CARD_CLASS
+      - run-full-regression-suite:
+          requires:
+            - flipwish
+      - GLYPH_12:
+          requires:
+            - flipwish
+      - snow-dark:
+          requires:
+            - GLYPH_12
+      - API-948:
+          requires:
+            - snow-dark
+      - columnMbMax:
+          requires:
+            - snow-dark
+      - meeting_2011_06:
+          requires:
+            - columnMbMax
+      - verify:
+          requires:
+            - meeting_2011_06
+      - weightHeal
+      - oldFixture:
+          requires:
+            - weightHeal
+      - Validate_Pipeline7:
+          requires:
+            - oldFixture
+      - bundle_colors:
+          requires:
+            - oldFixture
+      - passwordpasswordnormal:
+          requires:
+            - bundle_colors
+      - green-light-go:
+          requires:
+            - passwordpasswordnormal
+      - f0rk:
+          requires:
+            - passwordpasswordnormal
+      - comment_collect_disable:
+          requires:
+            - f0rk
+      - yuki-push:
+          requires:
+            - comment_collect_disable
+      - realHank:
+          requires:
+            - comment_collect_disable
+      - start7:
+          requires:
+            - realHank
+      - sep19-ship:
+          requires:
+            - start7
+      - tRACe-LiGht
+      - setProfileIRQ:
+          requires:
+            - tRACe-LiGht
+      - fix-3239:
+          requires:
+            - setProfileIRQ
+      - email_rates:
+          requires:
+            - setProfileIRQ
+      - has-legend:
+          requires:
+            - email_rates
+      - refactor-7091:
+          requires:
+            - has-legend
+      - EllaReader:
+          requires:
+            - has-legend
+      - canTransform:
+          requires:
+            - EllaReader
+      - fire-up:
+          requires:
+            - canTransform
+      - motorArr:
+          requires:
+            - canTransform
+      - span-wolf:
+          requires:
+            - motorArr
+      - bake-it:
+          requires:
+            - span-wolf
+      - needs_box:
+          requires:
+            - span-wolf
+      - storePct:
+          requires:
+            - needs_box
+      - nightly-v1:
+          requires:
+            - storePct
+      - failVPNPhone:
+          requires:
+            - storePct
+      - DBCard:
+          requires:
+            - failVPNPhone
+      - hotfix-9813:
+          requires:
+            - DBCard
